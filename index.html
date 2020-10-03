@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Find a mentor</title>
+    <style type="text/css">
+        .container {
+            width: 100%;
+            display: relavent;
+        }
+
+        .progressbar {
+            display: flex;
+            flex-direction: row;
+
+
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding-right: 30%;
+
+        }
+
+        .list-span {
+            display: block;
+            background-color: green;
+            padding: 12px;
+            width: 1em;
+            border-radius: 50%;
+            color: white
+        }
+
+        #test>span {
+            background-color: grey;
+             !important color: black;
+             !important
+        }
+
+        #test>li {
+            color: black
+        }
+
+        li {
+            color: green;
+
+        }
+
+        .span1 {
+            width: 30%;
+            border-top: 3px solid green;
+            position: absolute;
+            left: 10%;
+            top: 5%;
+        }
+
+        .span2 {
+            width: 30%;
+            border-top: 3px solid grey;
+            position: absolute;
+            RIGHT: 25%;
+            top: 5%;
+            z-index: -1;
+        }
+
+
+        @keyframes anim-glow {
+            0% {
+                box-shadow: 0 0 green;
+            }
+
+            100% {
+                box-shadow: 0 0 10px 8px transparent;
+                border-width: 2px;
+            }
+        }
+
+        #icon {
+            border: 2px solid green;
+            animation: anim-glow 2s ease infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="progressbar">
+            <div>
+                <span class='list-span'>1</span>
+                <li class="done">Search
+                </li>
+
+            </div>
+
+            <div id='choose'>
+                <span id='icon' class='list-span'>2
+                </span>
+
+                <li class="active">Choose</li>
+            </div>
+
+            <div id='test'>
+                <span class='list-span'>3</span>
+
+                <li>Request</li>
+
+            </div>
+
+
+        </ul>
+        <span class=' span1'></span>
+        <span class=' span2'> </span>
+
+
+    </div>
+</body>
+<script>
+    document.getElementById('choose').addEventListener('click', function () {
+        // add a setinterval so remove a class and add class a set time from indivial div
+        //class span1 and 2 need change border color
+        //use div-nt child to change color of the span and list 
+    })
+</script>
+
+</html>
