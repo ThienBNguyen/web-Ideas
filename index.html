@@ -6,14 +6,14 @@
     <style type="text/css">
         .container {
             width: 100%;
-            display: relavent;
+
         }
 
         .progressbar {
             display: flex;
             flex-direction: row;
-
-
+            margin: 0 auto;
+            width: 70%;
         }
 
         ul {
@@ -37,37 +37,19 @@
             color: white
         }
 
-        #test>span {
+        .inactiveicon {
             background-color: grey;
-             !important color: black;
-             !important
+            color: black;
         }
 
-        #test>li {
+        .inactivetext {
             color: black
         }
 
-        li {
-            color: green;
-
+        .activetext {
+            color: green
         }
 
-        .span1 {
-            width: 30%;
-            border-top: 3px solid green;
-            position: absolute;
-            left: 10%;
-            top: 5%;
-        }
-
-        .span2 {
-            width: 30%;
-            border-top: 3px solid grey;
-            position: absolute;
-            RIGHT: 25%;
-            top: 5%;
-            z-index: -1;
-        }
 
 
         @keyframes anim-glow {
@@ -81,9 +63,39 @@
             }
         }
 
-        #icon {
+        .icon {
             border: 2px solid green;
             animation: anim-glow 2s ease infinite;
+        }
+
+        .inactive-span {
+            border-top: 3px solid grey;
+
+        }
+
+
+
+        .span {
+            z-index: -1;
+            position: absolute;
+
+        }
+
+        .span1 {
+            width: 22%;
+            left: 18%;
+            top: 3%;
+        }
+
+        .span2 {
+            width: 22%;
+            RIGHT: 37%;
+            top: 3%;
+        }
+
+        .active-span {
+            border-top: 3px solid green;
+
         }
     </style>
 </head>
@@ -91,41 +103,107 @@
 <body>
     <div class="container">
         <ul class="progressbar">
-            <div>
-                <span class='list-span'>1</span>
-                <li class="done">Search
+            <div id='search'>
+                <span id='searchspan' class='list-span inactiveicon'>1</span>
+                <li id='searchlist' class="done inactivetext">Search
                 </li>
 
             </div>
 
             <div id='choose'>
-                <span id='icon' class='list-span'>2
+                <span id='choosespan' class='list-span inactiveicon'>2
                 </span>
 
-                <li class="active">Choose</li>
+                <li id='chooselist' class="active inactivetext">Choose</li>
             </div>
 
-            <div id='test'>
-                <span class='list-span'>3</span>
+            <div id="request">
+                <span id='requestspan' class='list-span inactiveicon'>3</span>
 
-                <li>Request</li>
+                <li id='requestlist' class=" inactivetext">Request</li>
 
             </div>
 
 
         </ul>
-        <span class=' span1'></span>
-        <span class=' span2'> </span>
+        <!-- <span id="span" class='span span1 active-span'></span>
+        <span id="span" class='span span2 inactive-span'> </span> -->
+        <span id="togglespan1" class='span span1 inactive-span'></span>
+        <span id="togglespan2" class='span span2 inactive-span'> </span>
+
 
 
     </div>
 </body>
 <script>
+    document.getElementById('search').addEventListener('click', function () {
+        // add a setinterval so remove a class and add class a set time from indivial div
+        //class span1 and 2 need change border color
+        search()
+        // document.getElementById('search').childeNodes.className = "icon activeicon"
+        // console.log(document.getElementById('search').childeNodes)
+        //use div-nt child to change color of the span and list 
+    })
+    function search() {
+
+        document.getElementById("searchspan").className = "list-span activeicon icon";
+        document.getElementById("searchlist").className = "activetext";
+        // document.getElementById("togglespan1").className = "inactive-span span span1";
+        // document.getElementById("togglespan2").className = "inactive-span span span2";
+        // document.getElementById("choice").className = "inactive-span span span2";
+
+
+
+    }
     document.getElementById('choose').addEventListener('click', function () {
         // add a setinterval so remove a class and add class a set time from indivial div
         //class span1 and 2 need change border color
+        choose()
+
         //use div-nt child to change color of the span and list 
     })
+    function choose() {
+        // var spanTag = document.getElementsByClassName('span')
+        // spanTag[0].classList.toggle("active-span");
+        document.getElementById("togglespan1").className = "active-span span span1";
+        document.getElementById("togglespan2").className = "inactive-span span span2";
+        document.getElementById("searchspan").className = "list-span activeicon";
+        document.getElementById("choosespan").className = "list-span activeicon icon";
+        document.getElementById("chooselist").className = "activetext";
+
+        // if (document.getElementById("togglespan1").className == "inactive-span span span1")
+        //     document.getElementById("togglespan1").className = "active-span span span1";
+        // else
+        //     document.getElementById("togglespan1").className = "inactive-span span span1";
+        // if (document.getElementById("togglespan2").className == "inactive-span span span2")
+        //     document.getElementById("togglespan2").className = "active-span span span2";
+        // else
+        //     document.getElementById("togglespan2").className = "inactive-span span span2";
+    }
+
+    document.getElementById('request').addEventListener('click', function () {
+        // add a setinterval so remove a class and add class a set time from indivial div
+        //class span1 and 2 need change border color
+        request()
+
+        //use div-nt child to change color of the span and list 
+    })
+    function request() {
+        document.getElementById("togglespan1").className = "active-span span span1";
+        document.getElementById("togglespan2").className = "active-span span span2";
+        document.getElementById("choosespan").className = "list-span activeicon ";
+        document.getElementById("requestlist").className = "activetext";
+        document.getElementById("requestspan").className = "list-span activeicon icon";
+        document.getElementById("searchspan").className = "list-span activeicon";
+        document.getElementById("seaerchlist").className = "activetext";
+
+
+    }
+    // var the_time = 1000;
+    // var funArr = [search, choose, request];
+    // for (var i = 0; i < funArr.length; i++) {
+    //     setInterval(funArr[i], the_time * (i + 1));
+    // }
 </script>
 
 </html>
